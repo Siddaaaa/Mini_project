@@ -1,0 +1,383 @@
+/* ==========================================================================
+   PET CARE TRACKER - GLOBAL STYLESHEET (App.css)
+   Edit this single file to change the look, feel, and colors of the whole app!
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. THEME VARIABLES (Quick Color & Design Tweaks)
+   Change these values to instantly restyle the entire application!
+   -------------------------------------------------------------------------- */
+:root {
+  /* Core Backgrounds */
+  --bg-app: #0a0f1d;                     /* Main application background */
+  --bg-header: rgba(15, 23, 42, 0.85);    /* Top header background */
+  --bg-sidebar: rgba(15, 23, 42, 0.75);   /* Navigation sidebar background */
+  --bg-panel: rgba(22, 33, 52, 0.75);     /* Panels & containers background */
+  --bg-card: rgba(24, 37, 60, 0.85);      /* Cards & metric boxes */
+  --bg-card-hover: rgba(30, 46, 74, 0.95);/* Cards hover state */
+  --bg-input: rgba(15, 23, 42, 0.85);     /* Text inputs & dropdowns */
+  --bg-modal: #111a2e;                    /* Pop-up dialogs */
+  --bg-modal-overlay: rgba(2, 6, 23, 0.8);/* Backdrop darkness */
+
+  /* Brand / Accent Colors (Customize your theme color here) */
+  --primary: #14b8a6;                     /* Vibrant Teal */
+  --primary-hover: #0d9488;               /* Darker Teal on hover */
+  --primary-light: rgba(20, 184, 166, 0.15); /* Light tint for active items */
+  --primary-border: rgba(20, 184, 166, 0.35);
+  --primary-text: #042f2e;                /* Contrast text inside primary buttons */
+
+  /* Status Colors */
+  --status-pending: #f59e0b;              /* Amber */
+  --status-pending-bg: rgba(245, 158, 11, 0.12);
+  --status-completed: #10b981;            /* Emerald Green */
+  --status-completed-bg: rgba(16, 185, 129, 0.12);
+  --status-danger: #f43f5e;               /* Rose / Red */
+  --status-danger-bg: rgba(244, 63, 94, 0.12);
+
+  /* Task Category Accents */
+  --cat-feeding: #fbbf24;
+  --cat-vet: #f43f5e;
+  --cat-medication: #c084fc;
+  --cat-grooming: #38bdf8;
+  --cat-other: #94a3b8;
+
+  /* Text Colors */
+  --text-main: #f8fafc;                   /* Main headings & text */
+  --text-secondary: #94a3b8;              /* Subtitles & metadata */
+  --text-muted: #64748b;                  /* Placeholders & hints */
+  --text-bright: #ffffff;
+
+  /* Borders & Radii */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: #14b8a6;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 10px 30px -8px rgba(20, 184, 166, 0.25);
+
+  /* Typography */
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', system-ui, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESETS & TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. APP CONTAINER & STRUCTURE
+   -------------------------------------------------------------------------- */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-app);
+}
+
+.app-main-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.app-main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   4. TOP HEADER BAR
+   -------------------------------------------------------------------------- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 4rem;
+  background: var(--bg-header);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-badge {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary), #34d399);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #051916;
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #5eead4, #a7f3d0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-stats-pill {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 1.25rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION SIDEBAR
+   -------------------------------------------------------------------------- */
+.app-sidebar {
+  width: 16rem;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-color: var(--primary-border);
+  font-weight: 600;
+}
+
+.pet-filter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  color: var(--text-secondary);
+}
+
+.pet-filter-item:hover {
+  background: rgba(30, 41, 59, 0.5);
+  color: var(--text-main);
+}
+
+.pet-filter-item.active {
+  background: var(--primary-light);
+  border-color: var(--primary-border);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   6. CARDS, PANELS & SURFACES
+   -------------------------------------------------------------------------- */
+.glass-panel, .ui-panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-card, .ui-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all 0.25s ease-in-out;
+  box-shadow: var(--shadow-card);
+}
+
+.glass-card:hover, .ui-card:hover {
+  border-color: var(--primary-border);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   7. BUTTONS
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--primary), #10b981);
+  color: var(--primary-text);
+  font-weight: 700;
+  font-size: 0.825rem;
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(20, 184, 166, 0.35);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(30, 41, 59, 0.7);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.825rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(51, 65, 85, 0.7);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   8. INPUTS, SELECTS & FORM FIELDS
+   -------------------------------------------------------------------------- */
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+select,
+.form-input,
+.form-select {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   9. MODALS & POPUPS
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--bg-modal-overlay);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-box {
+  background: var(--bg-modal);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 30rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   10. ANIMATIONS
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
