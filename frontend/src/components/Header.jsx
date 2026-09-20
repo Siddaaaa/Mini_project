@@ -17,9 +17,9 @@ export default function Header({ onOpenAddPet, onOpenAddTask, petCount, pendingT
         </div>
         <div>
           <h1 className="brand-title">
-            Pet Care Tracker
+            Pawsome
           </h1>
-          <p className="text-xs text-slate-400 hidden sm:block">
+          <p className="text-xs text-slate-500 font-medium hidden sm:block">
             Daily health & task manager
           </p>
         </div>
@@ -28,21 +28,21 @@ export default function Header({ onOpenAddPet, onOpenAddTask, petCount, pendingT
       {/* Center Stats Bar */}
       <div className="hidden lg:flex header-stats-pill">
         <div className="flex items-center space-x-2">
-          <Calendar className="w-3.5 h-3.5 text-teal-400" />
-          <span>{currentDate}</span>
+          <Calendar className="w-3.5 h-3.5 text-orange-500" />
+          <span className="text-slate-700 font-medium">{currentDate}</span>
         </div>
-        <div className="w-px h-3 bg-slate-700" />
+        <div className="w-px h-3.5 bg-slate-200" />
         <div className="flex items-center space-x-1.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>
-            <strong className="text-slate-100 font-semibold">{petCount}</strong> Pets Registered
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-slate-600">
+            <strong className="text-slate-900 font-bold">{petCount}</strong> Pets Registered
           </span>
         </div>
-        <div className="w-px h-3 bg-slate-700" />
+        <div className="w-px h-3.5 bg-slate-200" />
         <div className="flex items-center space-x-1.5">
-          <Heart className="w-3.5 h-3.5 text-rose-400" />
-          <span>
-            <strong className="text-slate-100 font-semibold">{pendingTaskCount}</strong> Pending Tasks
+          <Heart className="w-3.5 h-3.5 text-rose-500" />
+          <span className="text-slate-600">
+            <strong className="text-slate-900 font-bold">{pendingTaskCount}</strong> Pending Tasks
           </span>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function Header({ onOpenAddPet, onOpenAddTask, petCount, pendingT
           onClick={onOpenAddPet}
           className="btn-secondary"
         >
-          <Plus className="w-4 h-4 text-teal-400" />
+          <Plus className="w-4 h-4 text-orange-500" />
           <span className="hidden sm:inline">Add Pet</span>
         </button>
         <button

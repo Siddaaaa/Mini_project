@@ -60,37 +60,37 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
   };
 
   const categoryIcons = [
-    { id: 'feeding', label: 'Feeding', icon: Utensils, color: 'text-amber-400 bg-amber-500/10 border-amber-500/30' },
-    { id: 'vet', label: 'Vet Visit', icon: Stethoscope, color: 'text-rose-400 bg-rose-500/10 border-rose-500/30' },
-    { id: 'medication', label: 'Medication', icon: Pill, color: 'text-purple-400 bg-purple-500/10 border-purple-500/30' },
-    { id: 'grooming', label: 'Grooming', icon: Scissors, color: 'text-sky-400 bg-sky-500/10 border-sky-500/30' },
-    { id: 'other', label: 'Other', icon: Bookmark, color: 'text-slate-400 bg-slate-500/10 border-slate-500/30' },
+    { id: 'feeding', label: 'Feeding', icon: Utensils, color: 'text-amber-700 bg-amber-100 border-amber-300 ring-2 ring-amber-400' },
+    { id: 'vet', label: 'Vet Visit', icon: Stethoscope, color: 'text-rose-700 bg-rose-100 border-rose-300 ring-2 ring-rose-400' },
+    { id: 'medication', label: 'Medication', icon: Pill, color: 'text-purple-700 bg-purple-100 border-purple-300 ring-2 ring-purple-400' },
+    { id: 'grooming', label: 'Grooming', icon: Scissors, color: 'text-sky-700 bg-sky-100 border-sky-300 ring-2 ring-sky-400' },
+    { id: 'other', label: 'Other', icon: Bookmark, color: 'text-emerald-700 bg-emerald-100 border-emerald-300 ring-2 ring-emerald-400' },
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-lg rounded-2xl glass-panel p-6 shadow-2xl border border-slate-700/60 text-slate-100">
+    <div className="modal-overlay">
+      <div className="modal-box max-w-lg">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
           <div className="flex items-center space-x-2.5">
-            <div className="p-2 rounded-xl bg-teal-500/20 text-teal-400">
+            <div className="p-2 rounded-xl bg-orange-100 text-orange-600">
               <Calendar className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-100">Schedule Task</h3>
-              <p className="text-xs text-slate-400">Assign a care duty or reminder to a pet</p>
+              <h3 className="text-lg font-bold text-slate-900">Schedule Task</h3>
+              <p className="text-xs text-slate-500 font-medium">Assign a care duty or reminder to a pet</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+          <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
             {error}
           </div>
         )}
@@ -98,20 +98,20 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Target Pet *
             </label>
             <select
               required
               value={formData.pet}
               onChange={(e) => setFormData({ ...formData, pet: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm transition-all shadow-sm"
             >
               {pets.length === 0 ? (
                 <option value="">No pets registered yet - please add a pet first</option>
               ) : (
                 pets.map((p) => (
-                  <option key={p._id} value={p._id} className="bg-slate-900 text-slate-100">
+                  <option key={p._id} value={p._id} className="bg-white text-slate-900">
                     {p.name} ({p.species} - {p.breed})
                   </option>
                 ))
@@ -120,7 +120,7 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Task Title *
             </label>
             <input
@@ -129,15 +129,15 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
               placeholder="e.g. Morning kibble & fresh water"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm placeholder-slate-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm placeholder-slate-400 transition-all shadow-sm"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Category *
             </label>
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
               {categoryIcons.map((cat) => {
                 const Icon = cat.icon;
                 const isSelected = formData.category === cat.id;
@@ -146,10 +146,10 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
                     key={cat.id}
                     type="button"
                     onClick={() => setFormData({ ...formData, category: cat.id })}
-                    className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-xs font-medium transition-all ${
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-2xl border text-xs font-bold transition-all cursor-pointer ${
                       isSelected
-                        ? `${cat.color} font-bold ring-1 ring-teal-400 scale-[1.02]`
-                        : 'border-slate-800 bg-slate-800/50 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                        ? `${cat.color} scale-[1.03] shadow-sm`
+                        : 'border-slate-200 bg-slate-50 text-slate-600 hover:text-slate-900 hover:bg-slate-100 hover:border-slate-300'
                     }`}
                   >
                     <Icon className="w-4 h-4 mb-1" />
@@ -161,7 +161,7 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Due Date & Time *
             </label>
             <input
@@ -169,23 +169,23 @@ export default function AddTaskModal({ isOpen, onClose, pets = [], onTaskAdded, 
               required
               value={formData.dueDate}
               onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm transition-all shadow-sm"
             />
           </div>
 
           {/* Action Footer */}
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors"
+              className="btn-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading || pets.length === 0}
-              className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 text-xs font-bold transition-all shadow-lg shadow-teal-500/20 disabled:opacity-50 cursor-pointer"
+              className="btn-primary"
             >
               <Plus className="w-4 h-4 stroke-[3]" />
               <span>{loading ? 'Creating...' : 'Schedule Task'}</span>

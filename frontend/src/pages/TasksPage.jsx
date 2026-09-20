@@ -102,22 +102,22 @@ export default function TasksPage({ pets = [], onOpenAddTask, onTasksUpdated, re
   return (
     <div className="space-y-6 pb-12 animate-fade-in">
       {/* Top Banner Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl glass-panel">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 sm:p-8 rounded-3xl ui-panel">
         <div>
-          <div className="flex items-center space-x-2 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-1">
+          <div className="flex items-center space-x-2 text-orange-600 text-xs font-bold uppercase tracking-wider mb-1">
             <CheckSquare className="w-4 h-4" />
             <span>Task Directory</span>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-100">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
             All Care Tasks ({tasks.length})
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             View completed and pending tasks, update status, and manage schedules.
           </p>
         </div>
         <button
           onClick={onOpenAddTask}
-          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-teal-500/20 transition-all cursor-pointer shrink-0"
+          className="btn-primary"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>New Task</span>
@@ -125,55 +125,55 @@ export default function TasksPage({ pets = [], onOpenAddTask, onTasksUpdated, re
       </div>
 
       {/* Filter Controls Bar */}
-      <div className="p-4 rounded-2xl glass-panel grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="p-5 sm:p-6 rounded-2xl ui-panel grid grid-cols-1 sm:grid-cols-3 gap-5">
         {/* Status Filter */}
-        <div className="space-y-1">
-          <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="space-y-1.5">
+          <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
             Status Filter
           </label>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 focus:outline-none focus:border-teal-500 transition-all cursor-pointer"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-800 focus:outline-none focus:border-orange-500 transition-all cursor-pointer shadow-sm"
           >
-            <option value="all" className="bg-slate-900">All Statuses</option>
-            <option value="pending" className="bg-slate-900">Pending Only</option>
-            <option value="completed" className="bg-slate-900">Completed Only</option>
+            <option value="all">All Statuses</option>
+            <option value="pending">Pending Only</option>
+            <option value="completed">Completed Only</option>
           </select>
         </div>
 
         {/* Category Filter */}
-        <div className="space-y-1">
-          <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="space-y-1.5">
+          <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
             Category Filter
           </label>
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 focus:outline-none focus:border-teal-500 transition-all cursor-pointer"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-800 focus:outline-none focus:border-orange-500 transition-all cursor-pointer shadow-sm"
           >
-            <option value="all" className="bg-slate-900">All Categories</option>
-            <option value="feeding" className="bg-slate-900">Feeding</option>
-            <option value="vet" className="bg-slate-900">Vet Visit</option>
-            <option value="medication" className="bg-slate-900">Medication</option>
-            <option value="grooming" className="bg-slate-900">Grooming</option>
-            <option value="other" className="bg-slate-900">Other</option>
+            <option value="all">All Categories</option>
+            <option value="feeding">Feeding</option>
+            <option value="vet">Vet Visit</option>
+            <option value="medication">Medication</option>
+            <option value="grooming">Grooming</option>
+            <option value="other">Other</option>
           </select>
         </div>
 
         {/* Pet Filter */}
-        <div className="space-y-1">
-          <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="space-y-1.5">
+          <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
             Pet Filter
           </label>
           <select
             value={petFilter}
             onChange={(e) => setPetFilter(e.target.value)}
-            className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 focus:outline-none focus:border-teal-500 transition-all cursor-pointer"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-800 focus:outline-none focus:border-orange-500 transition-all cursor-pointer shadow-sm"
           >
-            <option value="all" className="bg-slate-900">All Pets</option>
+            <option value="all">All Pets</option>
             {pets.map((p) => (
-              <option key={p._id} value={p._id} className="bg-slate-900">
+              <option key={p._id} value={p._id}>
                 {p.name} ({p.species})
               </option>
             ))}
@@ -182,34 +182,34 @@ export default function TasksPage({ pets = [], onOpenAddTask, onTasksUpdated, re
       </div>
 
       {/* Tabular View */}
-      <div className="rounded-3xl glass-panel overflow-hidden border border-slate-800">
+      <div className="app-table-container">
         {loading ? (
           <div className="py-16 text-center text-slate-400 space-y-3">
-            <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto" />
-            <p className="text-xs">Loading task records...</p>
+            <div className="w-8 h-8 border-3 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto" />
+            <p className="text-xs font-semibold text-slate-500">Loading task records...</p>
           </div>
         ) : tasks.length === 0 ? (
           <div className="py-16 text-center space-y-3">
-            <CheckSquare className="w-12 h-12 text-slate-600 mx-auto" />
-            <h4 className="text-base font-bold text-slate-300">No Tasks Matching Filters</h4>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            <CheckSquare className="w-12 h-12 text-slate-300 mx-auto" />
+            <h4 className="text-base font-bold text-slate-800">No Tasks Matching Filters</h4>
+            <p className="text-xs text-slate-500 max-w-sm mx-auto font-medium">
               Try adjusting your status, category, or pet filters above to see more records.
             </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
+            <table className="app-table">
               <thead>
-                <tr className="border-b border-slate-800 bg-slate-900/80 text-slate-400 uppercase tracking-wider text-[10px] font-semibold">
-                  <th className="py-3.5 px-4">Status</th>
-                  <th className="py-3.5 px-4">Task Title</th>
-                  <th className="py-3.5 px-4">Category</th>
-                  <th className="py-3.5 px-4">Assigned Pet</th>
-                  <th className="py-3.5 px-4">Due Date</th>
-                  <th className="py-3.5 px-4 text-right">Actions</th>
+                <tr>
+                  <th>Status</th>
+                  <th>Task Title</th>
+                  <th>Category</th>
+                  <th>Assigned Pet</th>
+                  <th>Due Date</th>
+                  <th className="text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody>
                 {tasks.map((task) => {
                   const badge = getCategoryBadge(task.category);
                   const CategoryIcon = badge.icon;
@@ -219,28 +219,26 @@ export default function TasksPage({ pets = [], onOpenAddTask, onTasksUpdated, re
                   return (
                     <tr
                       key={task._id}
-                      className={`hover:bg-slate-800/40 transition-colors ${
-                        isCompleted ? 'bg-slate-900/30' : ''
-                      } ${isActioning ? 'opacity-50 pointer-events-none' : ''}`}
+                      className={isActioning ? 'opacity-50 pointer-events-none' : ''}
                     >
                       {/* Status Toggle Cell */}
-                      <td className="py-3.5 px-4 whitespace-nowrap">
+                      <td className="whitespace-nowrap">
                         <button
                           onClick={() => handleToggle(task._id)}
-                          className={`inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold border transition-all cursor-pointer ${
+                          className={`inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold border transition-all cursor-pointer ${
                             isCompleted
-                              ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/25'
-                              : 'bg-amber-500/15 text-amber-300 border-amber-500/30 hover:bg-amber-500/25'
+                              ? 'status-pill-completed'
+                              : 'status-pill-pending'
                           }`}
                         >
                           {isCompleted ? (
                             <>
-                              <Check className="w-3 h-3 text-emerald-400" />
+                              <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                               <span>Completed</span>
                             </>
                           ) : (
                             <>
-                              <Clock className="w-3 h-3 text-amber-400" />
+                              <Clock className="w-3.5 h-3.5 stroke-[2.5]" />
                               <span>Pending</span>
                             </>
                           )}
@@ -248,51 +246,51 @@ export default function TasksPage({ pets = [], onOpenAddTask, onTasksUpdated, re
                       </td>
 
                       {/* Title */}
-                      <td className="py-3.5 px-4 font-semibold text-slate-100 max-w-xs truncate">
-                        <span className={isCompleted ? 'line-through text-slate-400' : ''}>
+                      <td className="font-bold text-slate-900 max-w-xs truncate">
+                        <span className={isCompleted ? 'line-through text-slate-400 font-normal' : ''}>
                           {task.title}
                         </span>
                       </td>
 
                       {/* Category Badge */}
-                      <td className="py-3.5 px-4 whitespace-nowrap">
+                      <td className="whitespace-nowrap">
                         <span
-                          className={`inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${badge.style}`}
+                          className={`inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold border ${badge.style}`}
                         >
-                          <CategoryIcon className="w-3 h-3" />
+                          <CategoryIcon className="w-3.5 h-3.5" />
                           <span>{badge.label}</span>
                         </span>
                       </td>
 
                       {/* Pet Info */}
-                      <td className="py-3.5 px-4 whitespace-nowrap">
+                      <td className="whitespace-nowrap">
                         {task.pet ? (
-                          <div className="flex items-center space-x-1.5 text-teal-300 font-medium">
-                            <PawPrint className="w-3.5 h-3.5 text-teal-400" />
+                          <div className="flex items-center space-x-1.5 text-orange-600 font-bold">
+                            <PawPrint className="w-3.5 h-3.5 text-orange-500" />
                             <span>{task.pet.name}</span>
-                            <span className="text-[10px] text-slate-500">({task.pet.species})</span>
+                            <span className="text-[11px] text-slate-500 font-medium">({task.pet.species})</span>
                           </div>
                         ) : (
-                          <span className="text-slate-500">Unassigned</span>
+                          <span className="text-slate-400 font-medium">Unassigned</span>
                         )}
                       </td>
 
                       {/* Due Date */}
-                      <td className="py-3.5 px-4 whitespace-nowrap text-slate-300 font-mono text-[11px]">
+                      <td className="whitespace-nowrap text-slate-600 font-medium text-xs">
                         {formatDate(task.dueDate)}
                       </td>
 
                       {/* Action Cell */}
-                      <td className="py-3.5 px-4 whitespace-nowrap text-right space-x-2">
+                      <td className="whitespace-nowrap text-right space-x-2">
                         <button
                           onClick={() => handleToggle(task._id)}
-                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-medium transition-all cursor-pointer"
+                          className="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-orange-50 text-slate-700 hover:text-orange-700 text-xs font-bold transition-all cursor-pointer border border-slate-200"
                         >
                           Toggle Status
                         </button>
                         <button
                           onClick={() => handleDelete(task._id)}
-                          className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 border border-slate-700/60 hover:border-rose-500/30 transition-all cursor-pointer inline-flex items-center"
+                          className="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 transition-all cursor-pointer inline-flex items-center shadow-sm"
                           title="Delete task"
                         >
                           <Trash2 className="w-3.5 h-3.5" />

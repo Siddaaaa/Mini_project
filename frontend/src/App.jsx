@@ -121,26 +121,26 @@ export default function App() {
         </div>
 
         {/* Mobile Bottom Navigation Bar */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-md border-t border-slate-800 flex items-center justify-around py-2">
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 flex items-center justify-around py-2.5 shadow-lg">
           <Link
             to="/"
-            className="flex flex-col items-center text-[10px] text-slate-400 hover:text-teal-400 font-medium"
+            className="flex flex-col items-center text-[10px] text-slate-600 hover:text-orange-600 font-bold transition-colors"
           >
-            <LayoutDashboard className="w-5 h-5 mb-0.5" />
+            <LayoutDashboard className="w-5 h-5 mb-0.5 text-orange-500" />
             <span>Dashboard</span>
           </Link>
           <Link
             to="/pets"
-            className="flex flex-col items-center text-[10px] text-slate-400 hover:text-teal-400 font-medium"
+            className="flex flex-col items-center text-[10px] text-slate-600 hover:text-orange-600 font-bold transition-colors"
           >
-            <HeartHandshake className="w-5 h-5 mb-0.5" />
+            <HeartHandshake className="w-5 h-5 mb-0.5 text-rose-500" />
             <span>Pets</span>
           </Link>
           <Link
             to="/tasks"
-            className="flex flex-col items-center text-[10px] text-slate-400 hover:text-teal-400 font-medium"
+            className="flex flex-col items-center text-[10px] text-slate-600 hover:text-orange-600 font-bold transition-colors"
           >
-            <CheckSquare className="w-5 h-5 mb-0.5" />
+            <CheckSquare className="w-5 h-5 mb-0.5 text-emerald-500" />
             <span>Tasks</span>
           </Link>
         </nav>

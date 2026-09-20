@@ -46,29 +46,29 @@ export default function AddPetModal({ isOpen, onClose, onPetAdded }) {
   const speciesOptions = ['Dog', 'Cat', 'Bird', 'Rabbit', 'Hamster', 'Fish', 'Reptile', 'Other'];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md rounded-2xl glass-panel p-6 shadow-2xl border border-slate-700/60 text-slate-100">
+    <div className="modal-overlay">
+      <div className="modal-box">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
           <div className="flex items-center space-x-2.5">
-            <div className="p-2 rounded-xl bg-teal-500/20 text-teal-400">
+            <div className="p-2 rounded-xl bg-orange-100 text-orange-600">
               <PawPrint className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-100">Add New Pet</h3>
-              <p className="text-xs text-slate-400">Register a new companion to your profile</p>
+              <h3 className="text-lg font-bold text-slate-900">Add New Pet</h3>
+              <p className="text-xs text-slate-500 font-medium">Register a new companion to your profile</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+          <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
             {error}
           </div>
         )}
@@ -76,7 +76,7 @@ export default function AddPetModal({ isOpen, onClose, onPetAdded }) {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Pet Name *
             </label>
             <input
@@ -85,22 +85,22 @@ export default function AddPetModal({ isOpen, onClose, onPetAdded }) {
               placeholder="e.g. Milo"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm placeholder-slate-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm placeholder-slate-400 transition-all shadow-sm"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Species *
               </label>
               <select
                 value={formData.species}
                 onChange={(e) => setFormData({ ...formData, species: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm transition-all"
+                className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm transition-all shadow-sm"
               >
                 {speciesOptions.map((opt) => (
-                  <option key={opt} value={opt} className="bg-slate-900 text-slate-100">
+                  <option key={opt} value={opt} className="bg-white text-slate-900">
                     {opt}
                   </option>
                 ))}
@@ -108,7 +108,7 @@ export default function AddPetModal({ isOpen, onClose, onPetAdded }) {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Age (years)
               </label>
               <input
@@ -118,13 +118,13 @@ export default function AddPetModal({ isOpen, onClose, onPetAdded }) {
                 placeholder="e.g. 3"
                 value={formData.age}
                 onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm placeholder-slate-500 transition-all"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm placeholder-slate-400 transition-all shadow-sm"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Breed
             </label>
             <input
@@ -132,23 +132,23 @@ export default function AddPetModal({ isOpen, onClose, onPetAdded }) {
               placeholder="e.g. Golden Retriever"
               value={formData.breed}
               onChange={(e) => setFormData({ ...formData, breed: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 text-slate-100 text-sm placeholder-slate-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-orange-500 text-slate-900 text-sm placeholder-slate-400 transition-all shadow-sm"
             />
           </div>
 
           {/* Action Footer */}
-          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors"
+              className="btn-secondary"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 text-xs font-bold transition-all shadow-lg shadow-teal-500/20 disabled:opacity-50 cursor-pointer"
+              className="btn-primary"
             >
               <Check className="w-4 h-4" />
               <span>{loading ? 'Saving...' : 'Register Pet'}</span>

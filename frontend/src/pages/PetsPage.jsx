@@ -43,22 +43,22 @@ export default function PetsPage({ pets = [], onOpenAddPet, onPetDeleted }) {
   return (
     <div className="space-y-6 pb-12 animate-fade-in">
       {/* Top Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl glass-panel">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 sm:p-8 rounded-3xl ui-panel">
         <div>
-          <div className="flex items-center space-x-2 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-1">
+          <div className="flex items-center space-x-2 text-orange-600 text-xs font-bold uppercase tracking-wider mb-1">
             <HeartHandshake className="w-4 h-4" />
             <span>Pet Profiles</span>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-100">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
             My Registered Pets ({pets.length})
           </h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Manage your pets and view pending tasks associated with each profile.
           </p>
         </div>
         <button
           onClick={onOpenAddPet}
-          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-teal-500/20 transition-all active:scale-95 cursor-pointer shrink-0"
+          className="btn-primary"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>Add New Pet</span>
@@ -66,27 +66,27 @@ export default function PetsPage({ pets = [], onOpenAddPet, onPetDeleted }) {
       </div>
 
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
-          <AlertCircle className="w-4 h-4 shrink-0" />
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center space-x-2 shadow-sm">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Pet Cards Grid */}
       {pets.length === 0 ? (
-        <div className="py-20 text-center glass-panel rounded-3xl space-y-4">
-          <div className="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto text-teal-400">
+        <div className="py-20 text-center ui-panel rounded-3xl space-y-4">
+          <div className="w-16 h-16 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center mx-auto text-orange-500">
             <PawPrint className="w-8 h-8" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-slate-200">No Pets Registered Yet</h3>
-            <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+            <h3 className="text-lg font-bold text-slate-900">No Pets Registered Yet</h3>
+            <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto font-medium">
               Add your dogs, cats, rabbits, or birds to start tracking their daily tasks and care schedules.
             </p>
           </div>
           <button
             onClick={onOpenAddPet}
-            className="px-5 py-2.5 rounded-xl bg-teal-500 text-slate-950 font-bold text-xs hover:bg-teal-400 transition-all cursor-pointer"
+            className="btn-primary"
           >
             + Add Your First Pet
           </button>
@@ -102,23 +102,23 @@ export default function PetsPage({ pets = [], onOpenAddPet, onPetDeleted }) {
             return (
               <div
                 key={pet._id}
-                className="relative rounded-3xl glass-card p-6 flex flex-col justify-between space-y-5 border border-slate-800 hover:border-teal-500/30 transition-all group"
+                className="relative rounded-3xl ui-card p-6 flex flex-col justify-between space-y-5 border border-slate-200 hover:border-orange-300 transition-all group"
               >
                 {/* Header Info & Avatar */}
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-3.5">
                     {/* Avatar Initials Badge */}
                     <div
-                      className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${theme.gradient} flex items-center justify-center text-slate-950 font-extrabold text-base shadow-md shadow-teal-500/10 font-mono`}
+                      className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${theme.gradient} flex items-center justify-center text-white font-extrabold text-base shadow-md shadow-orange-500/20 font-mono`}
                     >
                       {initials}
                     </div>
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-100 flex items-center space-x-2">
+                      <h3 className="text-lg font-extrabold text-slate-900 flex items-center space-x-2">
                         <span>{pet.name}</span>
                         <span className="text-base">{theme.emoji}</span>
                       </h3>
-                      <p className="text-xs text-slate-400 font-medium">
+                      <p className="text-xs text-slate-500 font-medium">
                         {pet.breed || 'Unknown Breed'}
                       </p>
                     </div>
@@ -128,8 +128,8 @@ export default function PetsPage({ pets = [], onOpenAddPet, onPetDeleted }) {
                   <span
                     className={`px-2.5 py-1 rounded-full text-xs font-bold font-mono border ${
                       pet.pendingTaskCount > 0
-                        ? 'bg-teal-500/15 text-teal-300 border-teal-500/30'
-                        : 'bg-slate-800 text-slate-400 border-slate-700'
+                        ? 'bg-orange-100 text-orange-800 border-orange-200'
+                        : 'bg-slate-100 text-slate-500 border-slate-200'
                     }`}
                   >
                     {pet.pendingTaskCount} pending
@@ -137,42 +137,42 @@ export default function PetsPage({ pets = [], onOpenAddPet, onPetDeleted }) {
                 </div>
 
                 {/* Details Meta Table */}
-                <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 text-xs">
+                <div className="grid grid-cols-2 gap-2 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs">
                   <div>
-                    <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
+                    <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-bold">
                       Species
                     </span>
-                    <span className="font-semibold text-slate-200">{pet.species}</span>
+                    <span className="font-bold text-slate-800">{pet.species}</span>
                   </div>
                   <div>
-                    <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
+                    <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-bold">
                       Age
                     </span>
-                    <span className="font-semibold text-slate-200">
+                    <span className="font-bold text-slate-800">
                       {pet.age !== undefined && pet.age !== null ? `${pet.age} yrs` : 'N/A'}
                     </span>
                   </div>
                 </div>
 
                 {/* Delete Confirmation or Delete Action */}
-                <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-500">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] text-slate-400 font-medium">
                     Added {new Date(pet.createdAt).toLocaleDateString()}
                   </span>
 
                   {isConfirming ? (
                     <div className="flex items-center space-x-2">
-                      <span className="text-[11px] text-rose-400 font-medium">Delete & tasks?</span>
+                      <span className="text-[11px] text-rose-600 font-bold">Delete & tasks?</span>
                       <button
                         onClick={() => handleDelete(pet._id)}
                         disabled={isDeleting}
-                        className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition-all cursor-pointer"
+                        className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-all cursor-pointer shadow-sm"
                       >
                         {isDeleting ? 'Deleting...' : 'Yes'}
                       </button>
                       <button
                         onClick={() => setConfirmPetId(null)}
-                        className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs font-medium hover:bg-slate-700 transition-all cursor-pointer"
+                        className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium hover:bg-slate-200 transition-all cursor-pointer border border-slate-200"
                       >
                         No
                       </button>
@@ -180,7 +180,7 @@ export default function PetsPage({ pets = [], onOpenAddPet, onPetDeleted }) {
                   ) : (
                     <button
                       onClick={() => setConfirmPetId(pet._id)}
-                      className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 border border-slate-700/80 hover:border-rose-500/30 text-xs font-medium transition-all cursor-pointer"
+                      className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 text-xs font-semibold transition-all cursor-pointer"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>Delete</span>

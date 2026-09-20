@@ -46,18 +46,18 @@ export default function Sidebar({ pets = [], selectedPetFilter, onSelectPetFilte
         </div>
 
         {/* Sidebar Pet Radio Filter */}
-        <div className="pt-4 border-t border-slate-800">
+        <div className="pt-4 border-t border-slate-200">
           <div className="px-3 flex items-center justify-between mb-3">
-            <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center space-x-1.5">
-              <Filter className="w-3.5 h-3.5 text-teal-400" />
+            <h2 className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center space-x-1.5">
+              <Filter className="w-3.5 h-3.5 text-orange-500" />
               <span>Pet Filter</span>
             </h2>
-            <span className="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-mono">
+            <span className="text-[11px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-bold">
               {pets.length}
             </span>
           </div>
 
-          <div className="space-y-1 max-h-64 overflow-y-auto pr-1">
+          <div className="space-y-1.5 max-h-64 overflow-y-auto pr-1">
             {/* All Pets Radio Choice */}
             <label
               className={`pet-filter-item ${selectedPetFilter === 'all' ? 'active' : ''}`}
@@ -69,11 +69,11 @@ export default function Sidebar({ pets = [], selectedPetFilter, onSelectPetFilte
                   value="all"
                   checked={selectedPetFilter === 'all'}
                   onChange={() => onSelectPetFilter('all')}
-                  className="accent-teal-500 w-3.5 h-3.5 cursor-pointer"
+                  className="accent-orange-500 w-3.5 h-3.5 cursor-pointer"
                 />
                 <div className="flex items-center space-x-1.5">
-                  <PawPrint className="w-3.5 h-3.5 text-teal-400" />
-                  <span>All Pets</span>
+                  <PawPrint className="w-3.5 h-3.5 text-orange-500" />
+                  <span className="font-semibold">All Pets</span>
                 </div>
               </div>
             </label>
@@ -91,13 +91,13 @@ export default function Sidebar({ pets = [], selectedPetFilter, onSelectPetFilte
                     value={pet._id}
                     checked={selectedPetFilter === pet._id}
                     onChange={() => onSelectPetFilter(pet._id)}
-                    className="accent-teal-500 w-3.5 h-3.5 cursor-pointer shrink-0"
+                    className="accent-orange-500 w-3.5 h-3.5 cursor-pointer shrink-0"
                   />
-                  <span className="shrink-0">{getSpeciesEmoji(pet.species)}</span>
-                  <span className="truncate">{pet.name}</span>
+                  <span className="shrink-0 text-base">{getSpeciesEmoji(pet.species)}</span>
+                  <span className="truncate font-semibold">{pet.name}</span>
                 </div>
                 {pet.pendingTaskCount > 0 && (
-                  <span className="text-[10px] font-bold bg-teal-500/20 text-teal-300 px-1.5 py-0.5 rounded-full shrink-0">
+                  <span className="text-[10px] font-bold bg-orange-100 text-orange-800 border border-orange-200 px-2 py-0.5 rounded-full shrink-0">
                     {pet.pendingTaskCount}
                   </span>
                 )}
@@ -108,10 +108,13 @@ export default function Sidebar({ pets = [], selectedPetFilter, onSelectPetFilte
       </div>
 
       {/* Footer Info */}
-      <div className="p-4 border-t border-slate-800/80">
-        <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-800 text-xs text-slate-400">
-          <p className="font-semibold text-slate-300 mb-0.5">Pet Care Tip 💡</p>
-          <p className="text-[11px] leading-relaxed">
+      <div className="p-4 border-t border-slate-200">
+        <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200/80 text-xs text-amber-900 shadow-sm">
+          <p className="font-bold text-amber-950 mb-1 flex items-center gap-1.5">
+            <span>Pet Care Tip</span>
+            <span>💡</span>
+          </p>
+          <p className="text-[11px] leading-relaxed text-amber-800">
             Consistent routine care & vet checkups keep your pets healthy and happy!
           </p>
         </div>
